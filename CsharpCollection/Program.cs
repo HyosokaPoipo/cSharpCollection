@@ -27,6 +27,7 @@ namespace CsharpCollection
             Console.WriteLine("Isi intList : ");
             foreach (int a in intList) Console.WriteLine(a);
 
+            Console.WriteLine("element 3 : "+intList[3]);
 
             /*** insert item baru ***/
             intList.Insert(2,99);
@@ -54,7 +55,7 @@ namespace CsharpCollection
 
             /*** clear total isi list ***/
             intList.Clear();
-
+                
             
             Console.ReadLine();
         }
