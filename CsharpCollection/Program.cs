@@ -10,54 +10,48 @@ namespace CsharpCollection
     {
         static void Main(string[] args)
         {
-            /*** Nampung list untuk integer ***/
-            List<int> intList = new List<int>();
+            /*** Deklarasi ***/
+            List<akatsuki> myList = new List<akatsuki>();
             
-            /**** Nambain Element *****/
-            intList.Add(3);
-            intList.Add(5);
-            intList.Add(7);
-            intList.Add(9);
-            intList.Add(2);
-            intList.Add(6);
+            /*** Nambain element baru ***/
+            myList.Add(new akatsuki() { name = "Itachi", rating=91, jutsu="Izanami"});
+            myList.Add(new akatsuki() { name = "Hyosoka", rating = 93, jutsu = "Bungeejigum" });
+            myList.Add(new akatsuki() { name = "Nagato", rating = 91, jutsu = "Sira Tensei" });
+            myList.Add(new akatsuki() { name = "Poipo", rating = 91, jutsu = "xxxxx" });
+
+            /* Nampilin element */
+            foreach (akatsuki a in myList) Console.WriteLine("Nama : "+a.name + " Rating : "+a.rating+ " Jutsu : "+a.jutsu);
 
 
-            /*** Ukuran/jumlah element dalam list ***/
-            Console.WriteLine("Jumlah Element : "+intList.Count);
-            Console.WriteLine("Isi intList : ");
-            foreach (int a in intList) Console.WriteLine(a);
+            /* Search item */
+            Console.WriteLine("\nElement dengan nama Itachi : "+myList.Find(x=>x.name.Contains("Itachi")));
+            Console.WriteLine("Element dengan rating 91 :" + myList.Find(x => x.rating == 91));
+            Console.WriteLine("Element dengan rating 90:" + myList.Find(x => x.rating == 90));
 
-            Console.WriteLine("element 3 : "+intList[3]);
-
-            /*** insert item baru ***/
-            intList.Insert(2,99);
-            intList.Insert(5, 99);
-            Console.WriteLine("\nIsi intList setelah insert element : ");
-            foreach (int a in intList) Console.WriteLine(a);
-            
-            
-            /*** search element dalam list ****/
-            Console.WriteLine(" search 7 : "+intList.Contains(7));
-            Console.WriteLine(" index 7 : "+intList.IndexOf(7));
-            Console.WriteLine(" search 77 : " + intList.Contains(77));
-            Console.WriteLine(" index 77 : " + intList.IndexOf(77));
+            /*Exist method*/
+            Console.WriteLine("\nApa ada yg ratingnya 93 ? : "+myList.Exists(x=>x.rating == 93));
+            Console.WriteLine("Apa ada yg ratingnya 95 ? : " + myList.Exists(x => x.rating == 95));
 
 
-            /*** sort item dalam list ***/
-            intList.Sort();
-            Console.WriteLine("\nIsi intList setelah di-sort : ");
-            foreach (int a in intList) Console.WriteLine(a);
-
-            /*** remove item ***/
-            Console.WriteLine(" remove 99 : " + intList.Remove(99));
-            Console.WriteLine(" remove 999 : " + intList.Remove(999));
-
-
-            /*** clear total isi list ***/
-            intList.Clear();
-                
             
             Console.ReadLine();
         }
     }
+
+
+
+    public class akatsuki
+    {
+        public string name { get; set; }
+        public int rating { get; set; }
+        public string jutsu { get; set; }
+
+
+        public override string ToString()
+        {
+            return "Name : "+ name+ ", Rating : "+ rating+ ", Jutsu "+jutsu;
+        }
+    }
+
+
 }
